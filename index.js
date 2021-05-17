@@ -22,6 +22,8 @@ function nextSequence() {
 $('.btn').click(function () {
   var userChosenColor = this.id; //storing the button that the user clicked
   userClickedPattern.push(userChosenColor);
+  var userAudio = new Audio('sounds/' + userChosenColor + '.mp3');
+  userAudio.play();
   console.log(userChosenColor);
   console.log(userClickedPattern);
 });
