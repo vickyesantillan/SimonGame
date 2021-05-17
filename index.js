@@ -14,16 +14,20 @@ function nextSequence() {
     .fadeIn(100)
     .fadeOut(100)
     .fadeIn(100);
-  var audio = new Audio('sounds/' + randomChosenColor + '.mp3');
-  audio.play(); //sound
+  playSound(randomChosenColor);
   i++;
+}
+
+//Play Sound function
+function playSound(colorSound) {
+  var audio = new Audio('sounds/' + colorSound + '.mp3');
+  audio.play();
 }
 
 $('.btn').click(function () {
   var userChosenColor = this.id; //storing the button that the user clicked
   userClickedPattern.push(userChosenColor);
-  var userAudio = new Audio('sounds/' + userChosenColor + '.mp3');
-  userAudio.play();
+  playSound(userChosenColor);
   console.log(userChosenColor);
   console.log(userClickedPattern);
 });
