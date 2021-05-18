@@ -45,13 +45,19 @@ function animatePress(currentColor) {
 
 //Game Logic
 function checkAnswer(currentLevel) {
-  if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
-    if (userClickedPattern.length === currentLevel) {
+  //Comparing that each elements are equal
+  if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
+    if (userClickedPattern.length === gamePattern.length) {
+      //checking that i have compared each element, because the length of the pattern is equal to the length of the chosen colors
       setTimeout(nextSequence(), 1000);
       userClickedPattern = [];
     }
   } else {
-    console.log('wrong');
+    $('body').addClass('game-over');
+    setTimeout(function () {
+      $('body').removeClass('game-over');
+    }, 200);
+    $('h1').text('Game Over, Press Any Key to Restart');
   }
 }
 
@@ -60,5 +66,7 @@ $('.btn').click(function () {
   userClickedPattern.push(userChosenColor);
   playSound(userChosenColor);
   animatePress(userChosenColor);
-  checkAnswer(gamePattern.length);
+  var largoUserClick = userClickedPattern.length;
+  var indexuserclick = largoUserClick - 1;
+  checkAnswer(indexuserclick);
 });
