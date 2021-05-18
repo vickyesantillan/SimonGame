@@ -58,7 +58,18 @@ function checkAnswer(currentLevel) {
       $('body').removeClass('game-over');
     }, 200);
     $('h1').text('Game Over, Press Any Key to Restart');
+    startOver();
   }
+}
+
+//Star over the game
+
+function startOver() {
+  level = 0;
+  i = 0;
+  gamePattern = [];
+  userClickedPattern = [];
+  start = false;
 }
 
 $('.btn').click(function () {
@@ -66,7 +77,7 @@ $('.btn').click(function () {
   userClickedPattern.push(userChosenColor);
   playSound(userChosenColor);
   animatePress(userChosenColor);
-  var largoUserClick = userClickedPattern.length;
-  var indexuserclick = largoUserClick - 1;
-  checkAnswer(indexuserclick);
+  var userClickLength = userClickedPattern.length;
+  var indexUserClick = userClickLength - 1;
+  checkAnswer(indexUserClick);
 });
